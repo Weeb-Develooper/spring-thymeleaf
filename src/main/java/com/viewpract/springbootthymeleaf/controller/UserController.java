@@ -1,8 +1,12 @@
 package com.viewpract.springbootthymeleaf.controller;
 
+import com.viewpract.springbootthymeleaf.model.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class UserController {
@@ -29,5 +33,15 @@ public class UserController {
         } else {
             return "F";
         }
+    }
+
+    @RequestMapping("demo2")
+    public String demo2(Model model) {
+        List<User> lst = new ArrayList<>();
+        lst.add(new User(1, "Tom", 30));
+        lst.add(new User(2, "Jerry", 29));
+        lst.add(new User(3, "Nancy", 27));
+        model.addAttribute("list", lst);
+        return "loop";
     }
 }
